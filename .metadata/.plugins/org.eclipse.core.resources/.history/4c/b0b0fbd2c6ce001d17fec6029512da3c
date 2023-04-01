@@ -1,0 +1,14 @@
+package edu.pnu.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Mission4Controller {
+	
+	
+	public Mission4Controller() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+}

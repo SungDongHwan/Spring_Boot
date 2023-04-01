@@ -1,0 +1,20 @@
+package edu.pnu.dao;
+
+public class LogDaoH2  {
+	private String method;
+	
+	public LogDaoH2() {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void addLogdao() {
+		create table dblog (
+				id int auto_increment primary key,
+				method varchar(10) not null,
+				sqlstring varchar(256) not null,
+				regidate date default current_timestamp not null,
+				success boolean default true
+			)
+
+	}
+}

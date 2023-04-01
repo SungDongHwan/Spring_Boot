@@ -1,0 +1,20 @@
+package edu.pnu.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import edu.pnu.domain.MemberVO;
+
+public interface MemberDao{
+
+	HashMap<String, Object> getMembers();
+
+	MemberVO getMember(Integer id);
+
+	MemberVO addMember(MemberVO member);
+
+	MemberVO updateMember(MemberVO member);
+
+	boolean deleteMember(Integer id);
+
+}

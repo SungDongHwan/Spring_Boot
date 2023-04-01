@@ -1,0 +1,48 @@
+package edu.pnu.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class LogDaoH2  {
+	
+	Connection con;
+	Statement st;
+	PreparedStatement psmt;
+	ResultSet rs;
+	public LogDaoH2() {
+		// TODO Auto-generated constructor stub
+		try {
+			Class.forName("org.h2.Driver");
+			DriverManager.getConnection("jdbc:h2:tcp://localhost/~/springboot", "sa", "");
+			System.out.println("DB 연결성공");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("DB연결중 에러");
+		}
+	}
+	
+	public void addLog(String method, String url, boolean success) {
+		try {
+			String sql = "Insert into DBlog (method, sqlString, success)"
+					+ "values(?,?,?)";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, method);
+			psmt.setString(2, url);
+			psmt.setBoolean(3, success);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public void addLog(String method, String url, Object result) {
+		addLog(method, url, (result!=null)?true:false); 
+	}
+}

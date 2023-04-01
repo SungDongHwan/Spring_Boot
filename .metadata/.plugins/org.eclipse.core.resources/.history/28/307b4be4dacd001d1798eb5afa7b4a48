@@ -1,0 +1,64 @@
+package edu.pnu.dao;
+
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.List;
+
+import edu.pnu.domain.MemberVO;
+
+public class MemberDaoH2Impl implements MemberDao {
+	Connection con;
+	PreparedStatement psmt;
+	Statement st;
+	ResultSet rs;
+	public MemberDaoH2Impl() {
+		// TODO Auto-generated constructor stub
+		try {
+			Class.forName("org.h2.Driver");
+			con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/springboot","sa","");
+			System.out.println("DB 연결 성공");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	public List<MemberVO> getMembers() {
+		// TODO Auto-generated method stub
+		
+		
+		return null;
+	}
+
+	@Override
+	public MemberVO getMember(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MemberVO addMember(MemberVO member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MemberVO updateMember(MemberVO member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteMember(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

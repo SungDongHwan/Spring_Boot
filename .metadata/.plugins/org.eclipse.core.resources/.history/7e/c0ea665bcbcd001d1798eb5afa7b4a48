@@ -1,0 +1,95 @@
+package com.example.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
+//연결 해제 (자원반납)
+
+import com.example.domain.MemberVO;
+
+public class MemberDAO  {
+	Connection con;
+	PreparedStatement psmt;
+	ResultSet rs;
+	Statement st;
+	public MemberDAO() {
+		
+		try {
+			Class.forName("org.h2.Driver");
+			con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/springboot","sa","");
+			
+			System.out.println("db 연결 성공");
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+	}
+
+	public List<MemberVO> listmember() {
+		 
+		try {
+			List<MemberVO> list = new ArrayList<>();
+			Statement st = con.createStatement();
+			rs = st.executeQuery("Select * from member");
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String pass = rs.getString("pass");
+				String name = rs.getString("name");
+				Date r = rs.getDate("regidate");
+				System.out.println(id+ ")" +"이름: " + name +"  비밀번호: " + pass);
+				list.add(new MemberVO(id, pass, name,r));
+			}
+			
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+	
+		
+	}
+	
+	
+	
+	public MemberVO addMemberDAO(String name,String pass) {
+		try {
+			String query =  "INSERT INTO MEMBER (PASS,NAME) VALUES(?,?)";
+			psmt = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+			psmt.setString(1, name);
+			psmt.setString(2, pass);
+			int id = Statement.RETURN_GENERATED_KEYS;
+			psmt.executeUpdate();
+			PreparedStatement psmt1;
+			query = "select * from member where pass = ?";
+			psmt1 = con.prepareStatement(query);
+			psmt1.setString(1, pass);
+			rs = psmt1.executeQuery();
+			while (rs.next()) {
+				System.out.println(rs.getInt(1));
+				MemberVO mem = new MemberVO(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4));
+				return  mem;
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	
+
+}

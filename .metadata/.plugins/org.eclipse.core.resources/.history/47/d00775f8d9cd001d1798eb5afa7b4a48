@@ -1,0 +1,45 @@
+package edu.pnu.service;
+
+import java.util.List;
+
+import edu.pnu.dao.MemberDao;
+import edu.pnu.dao.MemberDaoH2Impl;
+import edu.pnu.dao.MemberDaoListImpl;
+import edu.pnu.domain.MemberVO;
+
+public class Mission3Service {
+	//MemberDao mem = new MemberDaoH2Impl();
+	public Mission3Service() {
+	
+		MemberDao mem = new MemberDaoListImpl();
+
+		// TODO Auto-generated constructor stub
+	}
+	public MemberVO getmember(Integer id) {
+		// TODO Auto-generated method stub
+		
+		
+		return null;
+	}
+
+	public List<MemberVO> getmembers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public MemberVO addmember(MemberVO member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public MemberVO updatemember(MemberVO member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public MemberVO deletemember(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

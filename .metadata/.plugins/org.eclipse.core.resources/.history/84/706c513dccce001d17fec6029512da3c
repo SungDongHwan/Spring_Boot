@@ -1,0 +1,12 @@
+package edu.pnu.dao;
+
+public class LogDaoH2 implements LogDao {
+	
+	public LogDaoH2() {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void addLogdao() {
+		
+	}
+}

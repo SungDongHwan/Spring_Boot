@@ -1,0 +1,8 @@
+package edu.pnu.domain;
+
+public class LogVO {
+	private int id;
+	private String method;
+	private String sqlstring;
+	private date varchar()
+}

@@ -1,0 +1,11 @@
+package edu.pnu.dao;
+
+public class LogDao {
+	
+	public LogDao() {
+		// TODO Auto-generated constructor stub
+	}
+	public void addLogdao() {
+		
+	}
+}

@@ -1,0 +1,31 @@
+package edu.pnu.service;
+
+import java.util.List;
+import java.util.Map;
+
+import edu.pnu.dao.LogDaoH2;
+import edu.pnu.dao.MemberDao;
+import edu.pnu.dao.MemberDaoH2Impl;
+import edu.pnu.domain.MemberVO;
+
+public class Mission4Service {
+	MemberDao mem = new MemberDaoH2Impl();
+	LogDaoH2 logDao = new LogDaoH2();
+	public Mission4Service() {
+	}
+
+	public List<MemberVO> getmembers() {
+		//return mem.getMembers();
+		System.out.println("DAO생성");
+		List<MemberVO> list = (List<MemberVO>) mem.getMembers().get("getMembers()");
+
+//		if (list != null)	logDao.addLog("GET", "/member", true);
+//		else				logDao.addLog("GET", "/member", false);
+		logDao.addLog("GET", "/member", list);
+		
+		return list;
+	}
+
+	
+	
+}
